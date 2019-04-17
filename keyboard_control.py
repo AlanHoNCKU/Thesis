@@ -17,17 +17,17 @@ def action():
     exit_ = 0
     input_char = msvcrt.getch()
     if input_char == b'w':
-        client.moveByVelocityAsync(3,0,0,1)
+        client.moveByVelocityAsync(5,0,0,1)
     elif input_char == b's':
-        client.moveByVelocityAsync(-3,0,0,1)
+        client.moveByVelocityAsync(-5,0,0,1)
     elif input_char == b'a':
-        client.moveByVelocityAsync(0,-3,0,1)
+        client.moveByVelocityAsync(0,-5,0,1)
     elif input_char == b'd':
-        client.moveByVelocityAsync(0,3,0,1)
+        client.moveByVelocityAsync(0,5,0,1)
     elif input_char == b'k':
-        client.moveByVelocityAsync(0,0,-3,1)
+        client.moveByVelocityAsync(0,0,-5,1)
     elif input_char == b'j':
-        client.moveByVelocityAsync(0,0,3,1)
+        client.moveByVelocityAsync(0,0,5,1)
     elif input_char == b'z':
         client.moveByVelocityAsync(0,0,0,1)
     elif input_char == b'l':
