@@ -50,9 +50,9 @@ class QLearningTable:
                 )
             )
     def save_qtable(self):
-        self.q_table.to_csv("train40.csv",index=True,sep=',')
+        self.q_table.to_csv("train1000.csv",index=True,sep=',')
     def read_qtable(self):
-        self.q_table = pd.read_csv('train100.csv', index_col=0)
+        self.q_table = pd.read_csv('train500.csv', index_col=0)
         self.q_table.columns = self.q_table.columns.map(int)
         self.q_table.index = self.q_table.index.map(str)
         print(self.q_table)
