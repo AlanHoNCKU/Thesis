@@ -23,6 +23,7 @@ class PolicyGradient:
 
         self.sess = tf.Session()
 
+
         if output_graph:
             tf.summary.FileWriter("log/", self.sess.graph)
 
@@ -87,6 +88,15 @@ class PolicyGradient:
             discounted_ep_rs[t] = running_add
 
         # normalize episode rewards
+        np.seterr(divide='ignore',invalid='ignore')
         discounted_ep_rs -= np.mean(discounted_ep_rs)
         discounted_ep_rs /= np.std(discounted_ep_rs)
         return discounted_ep_rs
+
+    def save_model(self):
+        saver = tf.train.Saver()
+        saver.save(self.sess, './train_model/papams20', write_meta_graph=False)
+    
+    def restore_model(self):
+        saver = tf.train.Saver()
+        saver.restore(self.sess, './train_model')

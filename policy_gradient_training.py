@@ -93,7 +93,10 @@ if __name__ == "__main__":
     # n_actions = len(action_space)
     n_actions = 2
     RL = PolicyGradient(n_actions=n_actions, n_features=3, learning_rate=0.02, reward_decay=0.995)
-    for i_episode in range(50):
+    train_epoch = 0
+    RL.restore_model()
+    for i_episode in range(10):
+        train_epoch = train_epoch + 1
         drone_init(client)
         observation = get_pos(client)
         done = 0
@@ -126,7 +129,6 @@ if __name__ == "__main__":
                     running_reward = running_reward * 0.99 + ep_rs_sum * 0.01
                 vt = RL.learn()
                 break
-            observation = observation_    
-
-        
-
+            observation = observation_
+        print(train_epoch)
+    RL.save_model()
